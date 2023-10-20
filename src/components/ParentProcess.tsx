@@ -8,7 +8,6 @@ import { parentMachine } from '../machines/parentMachine/parentMachine';
 
 export const ParentProcess: FC = () => {
 	const [state, send] = useMachine(parentMachine);
-	console.log('### co masz w state: ', state.value);
 
 	switch (state.value.toString()) {
 		case 'parentMachineState1':
