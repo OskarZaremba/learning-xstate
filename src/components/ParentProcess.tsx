@@ -8,8 +8,7 @@ import { parentMachine } from '../machines/parentMachine/parentMachine';
 
 export const ParentProcess: FC = () => {
 	const memoizedParentMachine = useMemo(() => parentMachine, []);
-	const parmachine = useMachine(memoizedParentMachine);
-	const [state, send] = parmachine;
+	const [state, send] = useMachine(memoizedParentMachine);
 
 	switch (state.value.toString()) {
 		case 'parentMachineState1':
