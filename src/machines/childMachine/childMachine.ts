@@ -1,6 +1,7 @@
 import { createMachine } from 'xstate';
 
 export const childMachine = createMachine({
+	predictableActionArguments: true,
 	initial: 'childMachineState1',
 	states: {
 		childMachineState1: {
