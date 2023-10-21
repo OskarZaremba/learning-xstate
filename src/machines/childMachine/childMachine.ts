@@ -17,6 +17,9 @@ export const childMachine = createMachine({
 			},
 		},
 		childMachineState3: {
+			on: { OKAY: 'childMachineState4' },
+		},
+		childMachineState4: {
 			type: 'final',
 		},
 	},

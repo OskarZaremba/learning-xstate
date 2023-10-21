@@ -1,4 +1,4 @@
-import { createMachine, forwardTo } from 'xstate';
+import { createMachine } from 'xstate';
 import { childMachine } from '../childMachine/childMachine';
 
 export const parentMachine = createMachine({
@@ -19,8 +19,5 @@ export const parentMachine = createMachine({
 			on: { GO_TO_PARENT_MACHINE_STATE4: 'parentMachineState4' },
 		},
 		parentMachineState4: { type: 'final' },
-	},
-	on: {
-		GO_TO_CHILD_MACHINE_STATE2: { actions: forwardTo('childMachine') },
 	},
 });

@@ -4,20 +4,17 @@ import { ChildMachineView1 } from './ChildMachineView1';
 import { ChildMachineView2 } from './ChildMachineView2';
 import { ChildMachineView3 } from './ChildMachineView3';
 
-export const ChildProcess: FC<{ parentState: any; parentSend: any }> = ({
-	parentState,
-	parentSend,
-}) => {
+export const ChildProcess: FC<{ parentState: any }> = ({ parentState }) => {
 	const { childMachine } = parentState.children;
-	const [childState] = useActor(childMachine);
+	const [state, send] = useActor(childMachine);
 
-	switch ((childState as any).value.toString()) {
+	switch ((state as any).value.toString()) {
 		case 'childMachineState1':
-			return <ChildMachineView1 send={parentSend} state={childState} />;
+			return <ChildMachineView1 send={send} state={state} />;
 		case 'childMachineState2':
-			return <ChildMachineView2 send={parentSend} state={childState} />;
+			return <ChildMachineView2 send={send} state={state} />;
 		case 'childMachineState3':
-			return <ChildMachineView3 send={parentSend} state={childState} />;
+			return <ChildMachineView3 send={send} state={state} />;
 		default:
 			return <></>;
 	}

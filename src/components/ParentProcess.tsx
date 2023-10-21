@@ -14,7 +14,7 @@ export const ParentProcess: FC = () => {
 		case 'parentMachineState1':
 			return <ParentMachineView1 send={send} state={state} />;
 		case 'parentMachineState2':
-			return <ChildProcess parentState={state} parentSend={send} />;
+			return <ChildProcess parentState={state} />;
 		case 'parentMachineState3':
 			return <ParentMachineView3 send={send} state={state} />;
 		case 'parentMachineState4':
