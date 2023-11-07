@@ -5,6 +5,7 @@ import { ChildMachineView2 } from './ChildMachineView2';
 import { ChildMachineView3 } from './ChildMachineView3';
 
 export const ChildProcess: FC<{ parentState: any }> = ({ parentState }) => {
+	console.log('### co masz w parentState: ', parentState);
 	const { childMachine } = parentState.children;
 	const [state, send] = useActor(childMachine);
 
