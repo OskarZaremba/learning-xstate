@@ -5,8 +5,7 @@ export const SignUp = ({
 }: {
 	authenticationState: any;
 }): JSX.Element => {
-	const { 'authenticationMachine.signingUp:invocation[0]': signUpMachine } =
-		authenticationState.children;
+	const { signUpMachine } = authenticationState.children;
 	const [state, send] = useActor(signUpMachine);
 
 	switch ((state as any).value.toString()) {

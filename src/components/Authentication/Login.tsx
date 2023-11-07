@@ -5,15 +5,17 @@ export const Login = ({
 }: {
 	authenticationState: any;
 }): JSX.Element => {
-	const { 'authenticationMachine.loggingIn:invocation[0]': signUpMachine } =
-		authenticationState.children;
-	const [state, send] = useActor(signUpMachine);
+	const { loginMachine } = authenticationState.children;
+	const [state, send] = useActor(loginMachine);
 
 	switch ((state as any).value.toString()) {
 		case 'chooseMethod':
 			return (
 				<div>
 					<h2>Login Machine: chooseMethod</h2>
+					<p>
+						What you have in secretNumber: {(state as any).context.secretNumber}
+					</p>
 					<button onClick={() => send({ type: 'LOGIN_VIA_CREDENTIALS' })}>
 						Login
 					</button>

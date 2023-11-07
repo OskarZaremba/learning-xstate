@@ -6,7 +6,7 @@ export const becomePro = createMachine({
 	id: 'becomePro',
 	predictableActionArguments: true,
 	preserveActionOrder: true,
-	context: { user: { isLoggedIn: true } },
+	context: { user: { isLoggedIn: false } },
 	initial: 'choosePlan',
 	states: {
 		choosePlan: {

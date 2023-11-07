@@ -11,7 +11,9 @@ export const authenticationMachine = createMachine({
 	states: {
 		loggingIn: {
 			invoke: {
+				id: 'loginMachine',
 				src: loginMachine,
+				data: { secretNumber: 8 },
 				onDone: [
 					{
 						target: 'loginSuccessful',
@@ -23,6 +25,7 @@ export const authenticationMachine = createMachine({
 		},
 		signingUp: {
 			invoke: {
+				id: 'signUpMachine',
 				src: signUpMachine,
 				onDone: [
 					{
