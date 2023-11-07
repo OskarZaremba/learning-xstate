@@ -8,7 +8,28 @@ import { parentMachine } from '../machines/parentMachine/parentMachine';
 
 export const ParentProcess: FC = () => {
 	const memoizedParentMachine = useMemo(() => parentMachine, []);
-	const [state, send] = useMachine(memoizedParentMachine);
+	// const getFromStorage = localStorage.getItem('testingEmail');
+	const getFromStorage = localStorage.getItem('testingState');
+	const recoveredState = getFromStorage
+		? JSON.parse(getFromStorage)
+		: memoizedParentMachine.initialState;
+	// const storedEmail = getFromStorage ? JSON.parse(getFromStorage) : '';
+	// const storedContext =
+	// 	getFromStorage !== null
+	// 		? JSON.parse(getFromStorage)
+	// 		: memoizedParentMachine.initialState.context;
+	const [state, send, actor] = useMachine(memoizedParentMachine, {
+		state: recoveredState,
+	});
+	actor.onTransition((state) => {
+		if (state.changed) {
+			if (state.value !== 'parentMachineState2') {
+				localStorage.setItem('testingState', JSON.stringify(state));
+				console.log('### jaki masz teraz state: ', state);
+			}
+		}
+	});
+	// console.log('### co masz w parent state: ', state);
 
 	switch (state.value.toString()) {
 		case 'parentMachineState1':

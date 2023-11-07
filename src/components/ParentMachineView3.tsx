@@ -3,6 +3,8 @@ import { FC } from 'react';
 type Props = { send: any; state: any };
 
 export const ParentMachineView3: FC<Props> = ({ send, state }) => {
+	localStorage.setItem('testingEmail', JSON.stringify(state.context.email));
+	// localStorage.setItem('testingState', JSON.stringify(state));
 	return (
 		<div>
 			<h2>{state.value.toString()}</h2>

@@ -1,11 +1,13 @@
-import { createMachine } from 'xstate';
+import { assign, createMachine } from 'xstate';
 import { childMachine } from '../childMachine/childMachine';
 
 export const parentMachine = createMachine(
 	{
 		predictableActionArguments: true,
+		preserveActionOrder: true,
 		initial: 'parentMachineState1',
 		context: {
+			email: '',
 			isLoggedIn: false,
 		},
 		states: {
@@ -15,6 +17,10 @@ export const parentMachine = createMachine(
 						{ cond: 'isLoggedIn', target: 'parentMachineState3' },
 						{ target: 'parentMachineState2' },
 					],
+					SET_IS_LOGGED_IN_TRUE: {
+						actions: [assign(() => ({ isLoggedIn: true }))],
+					},
+					SET_EMAIL: { actions: assign({ email: 'test@fishbrain.com' }) },
 				},
 			},
 			parentMachineState2: {

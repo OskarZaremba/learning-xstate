@@ -8,6 +8,8 @@ export const ChildProcess: FC<{ parentState: any }> = ({ parentState }) => {
 	const { childMachine } = parentState.children;
 	const [state, send] = useActor(childMachine);
 
+	console.log('### co masz w child state: ', state);
+
 	switch ((state as any).value.toString()) {
 		case 'childMachineState1':
 			return <ChildMachineView1 send={send} state={state} />;
