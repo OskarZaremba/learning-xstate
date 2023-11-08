@@ -13,9 +13,9 @@ export const Login = ({
 			return (
 				<div>
 					<h2>Login Machine: chooseMethod</h2>
-					<p>
+					{/* <p>
 						What you have in secretNumber: {(state as any).context.secretNumber}
-					</p>
+					</p> */}
 					<button onClick={() => send({ type: 'LOGIN_VIA_CREDENTIALS' })}>
 						Login
 					</button>

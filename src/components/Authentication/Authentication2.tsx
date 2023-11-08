@@ -1,9 +1,10 @@
 import { useMachine } from '@xstate/react';
 import { Login } from './Login';
 import { SignUp } from './SignUp';
-import { authenticationMachine } from '../../machines/authenticationMachine/authenticationMachine';
+import { getAuthenticationMachine } from '../../machines/getAuthenticationMachine/getAuthenticationMachine';
 
 export const Authentication2 = (): JSX.Element => {
+	const authenticationMachine = getAuthenticationMachine('loggingIn');
 	const [state] = useMachine(authenticationMachine);
 
 	switch ((state as any).value.toString()) {
