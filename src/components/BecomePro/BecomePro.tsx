@@ -4,7 +4,7 @@ import { Authentication } from '../Authentication/Authentication';
 
 export const BecomePro = (): JSX.Element => {
 	const [state, send] = useMachine(becomePro);
-	console.log('### co masz w state: ', state);
+
 	switch (state.value.toString()) {
 		case 'choosePlan':
 			return (

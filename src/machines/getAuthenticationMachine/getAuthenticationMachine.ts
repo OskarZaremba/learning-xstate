@@ -8,13 +8,14 @@ export const getAuthenticationMachine = (initialState: string) =>
 		id: 'authenticationMachine',
 		predictableActionArguments: true,
 		preserveActionOrder: true,
+		context: { secretNumber: 8, secretWord: 'yeahhh', secretSanta: 'oskar' },
 		initial: initialState,
 		states: {
 			loggingIn: {
 				invoke: {
 					id: 'loginMachine',
 					src: loginMachine,
-					data: { secretNumber: 8 },
+					data: (context) => context,
 					onDone: [
 						{
 							target: 'loginSuccessful',

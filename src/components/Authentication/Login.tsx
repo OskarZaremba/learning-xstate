@@ -13,9 +13,10 @@ export const Login = ({
 			return (
 				<div>
 					<h2>Login Machine: chooseMethod</h2>
-					{/* <p>
-						What you have in secretNumber: {(state as any).context.secretNumber}
-					</p> */}
+					<p>
+						What you have in secretNumber: {(state as any).context.secretNumber}{' '}
+						and what you have in secretWord: {(state as any).context.secretWord}
+					</p>
 					<button onClick={() => send({ type: 'LOGIN_VIA_CREDENTIALS' })}>
 						Login
 					</button>

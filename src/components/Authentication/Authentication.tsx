@@ -7,9 +7,8 @@ export const Authentication = ({
 }: {
 	onboardingState: any;
 }): JSX.Element => {
-	const { 'becomePro.authenticatingUser:invocation[0]': becomeProMachine } =
-		onboardingState.children;
-	const [state] = useActor(becomeProMachine);
+	const { authenticationService } = onboardingState.children;
+	const [state] = useActor(authenticationService);
 
 	switch ((state as any).value.toString()) {
 		case 'loggingIn':

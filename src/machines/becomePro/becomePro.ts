@@ -29,6 +29,7 @@ export const becomePro = createMachine({
 		},
 		authenticatingUser: {
 			invoke: {
+				id: 'authenticationService',
 				src: authenticationMachine,
 				onDone: { target: 'providePaymentDetails' },
 			},
